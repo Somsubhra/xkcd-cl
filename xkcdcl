@@ -10,8 +10,28 @@ __version__ = "0.1.0"
 import sys
 import json
 
+# Define constants
+API_URL = "http://xkcd.com/"
+
+
+# The XKCD Command Line class
+class XKCDCL:
+    def __init__(self):
+        pass
+    
+    def get_api_url():
+        pass
+    
+    def get_comic_url(self):
+        pass
+    
+    def display_comic(self):
+        pass
+    
+# The main method
 def main():
     pass
 
+# Invocation of the main method
 if __name__ == "__main__":
     main()
