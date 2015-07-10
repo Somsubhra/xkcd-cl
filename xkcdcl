@@ -10,8 +10,8 @@ __version__ = "0.1.0"
 import sys
 import json
 import urllib2
-from PIL import Image
 import io
+from PIL import Image
 
 # Define constants
 API_ROOT = "http://xkcd.com/"
