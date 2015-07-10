@@ -11,7 +11,7 @@ import sys
 import json
 
 # Define constants
-API_URL = "http://xkcd.com/"
+API_ROOT = "http://xkcd.com/"
 
 
 # The XKCD Command Line class
@@ -29,7 +29,12 @@ class XKCDCL:
     
     # Fetch the API url corresponding to current comic
     def get_api_url():
-        pass
+        if self.api_url == "":
+            # Fetch the currrent comic api url
+            self.api_url = API_ROOT + "info.0.json"
+        else:
+            # Fetch the api url of comic at given point
+            self.api_url = API_ROOT + self.arg + "/info.0.json"
     
     # Get the comic url corresponding to current API call
     def get_comic_url(self):
