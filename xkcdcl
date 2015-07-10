@@ -35,6 +35,10 @@ class XKCDCL:
         if self.arg == "":
             # Fetch the currrent comic api url
             self.api_url = API_ROOT + "info.0.json"
+        elif self.arg == "about":
+            # Show about info
+            self.show_about_info()
+            sys.exit()
         else:
             # Fetch the api url of comic at given point
             self.api_url = API_ROOT + self.arg + "/info.0.json"
@@ -67,6 +71,12 @@ class XKCDCL:
         except:
             print "Error: The comic does not exist"
             return
+
+    # Show the about data of program
+    def show_about_info(self):
+        print "XKCD Command Line Utility (v" + __version__ + ")"
+        print "Written by " + __author__ + "<" + __email__ + ">"
+        print "Licensed under " + __license__
 
 # The main method
 def main():

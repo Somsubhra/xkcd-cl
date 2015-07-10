@@ -16,6 +16,10 @@ xkcdcl
 ```
 xkcdcl <comic_id>
 ```
+* See the about info
+```
+xkcdcl about
+```
 
 ### Uninstall
 ```
