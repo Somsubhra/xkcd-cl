@@ -9,6 +9,7 @@ __version__ = "0.1.0"
 # All imports
 import sys
 import json
+import urllib2
 
 # Define constants
 API_ROOT = "http://xkcd.com/"
@@ -26,28 +27,37 @@ class XKCDCL:
             self.arg = sys.argv[1]
 
         self.display_comic()
-    
+
     # Fetch the API url corresponding to current comic
-    def get_api_url():
+    def get_api_url(self):
         if self.api_url == "":
             # Fetch the currrent comic api url
             self.api_url = API_ROOT + "info.0.json"
         else:
             # Fetch the api url of comic at given point
             self.api_url = API_ROOT + self.arg + "/info.0.json"
-    
+
     # Get the comic url corresponding to current API call
     def get_comic_url(self):
         self.get_api_url()
-    
+
+        try:
+            # Fetch the data from API endpoint
+            data = json.load(urllib2.urlopen(self.api_url))
+        except:
+            return
+
+        self.comic_url = data["img"]
+
     # Display the comic in the GUI system
     def display_comic(self):
         self.get_comic_url()
+        print self.comic_url
 
 
 # The main method
 def main():
-    pass
+    XKCDCL()
 
 # Invocation of the main method
 if __name__ == "__main__":
