@@ -75,7 +75,7 @@ class XKCDCL:
     # Show the about data of program
     def show_about_info(self):
         print "XKCD Command Line Utility (v" + __version__ + ")"
-        print "Written by " + __author__ + "<" + __email__ + ">"
+        print "Written by " + __author__ + " <" + __email__ + ">"
         print "Licensed under " + __license__
 
 # The main method
