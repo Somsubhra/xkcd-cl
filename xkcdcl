@@ -23,14 +23,14 @@ class XKCDCL:
         self.api_url = ""
         self.comic_url = ""
 
-        if len(sys.argv) > 2:
+        if len(sys.argv) >= 2:
             self.arg = sys.argv[1]
 
         self.display_comic()
 
     # Fetch the API url corresponding to current comic
     def get_api_url(self):
-        if self.api_url == "":
+        if self.arg == "":
             # Fetch the currrent comic api url
             self.api_url = API_ROOT + "info.0.json"
         else:
