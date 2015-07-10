@@ -49,16 +49,24 @@ class XKCDCL:
         except:
             return
 
+        # Get the image URL from json data
         self.comic_url = data["img"]
 
     # Display the comic in the GUI system
     def display_comic(self):
         self.get_comic_url()
 
-        fd = urllib2.urlopen(self.comic_url)
-        comic_file = io.BytesIO(fd.read())
-        comic = Image.open(comic_file)
-        comic.show()
+        try:
+            # Fetch the image data
+            fd = urllib2.urlopen(self.comic_url)
+            comic_file = io.BytesIO(fd.read())
+
+            # Show the image using PIL
+            comic = Image.open(comic_file)
+            comic.show()
+        except:
+            print "Error: The comic does not exist"
+            return
 
 # The main method
 def main():
