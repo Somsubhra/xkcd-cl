@@ -10,6 +10,8 @@ __version__ = "0.1.0"
 import sys
 import json
 import urllib2
+from PIL import Image
+import io
 
 # Define constants
 API_ROOT = "http://xkcd.com/"
@@ -52,8 +54,11 @@ class XKCDCL:
     # Display the comic in the GUI system
     def display_comic(self):
         self.get_comic_url()
-        print self.comic_url
 
+        fd = urllib2.urlopen(self.comic_url)
+        comic_file = io.BytesIO(fd.read())
+        comic = Image.open(comic_file)
+        comic.show()
 
 # The main method
 def main():
