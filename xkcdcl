@@ -1,0 +1,17 @@
+#!/usr/bin/env python
+
+# Headers
+__author__ = "Somsubhra Bairi"
+__email__ = "somsubhra.bairi@gmail.com"
+__license__ = "WTFPL (Do What The Fuck You Want to Public License)"
+__version__ = "0.1.0"
+
+# All imports
+import sys
+import json
+
+def main():
+    pass
+
+if __name__ == "__main__":
+    main()
