@@ -18,7 +18,14 @@ API_URL = "http://xkcd.com/"
 class XKCDCL:
     # Constructor for the XKCDCL
     def __init__(self):
-        pass
+        self.arg = ""
+        self.api_url = ""
+        self.comic_url = ""
+
+        if len(sys.argv) > 2:
+            self.arg = sys.argv[1]
+
+        self.display_comic()
     
     # Fetch the API url corresponding to current comic
     def get_api_url():
@@ -26,11 +33,11 @@ class XKCDCL:
     
     # Get the comic url corresponding to current API call
     def get_comic_url(self):
-        pass
+        self.get_api_url()
     
     # Display the comic in the GUI system
     def display_comic(self):
-        pass
+        self.get_comic_url()
 
 
 # The main method
