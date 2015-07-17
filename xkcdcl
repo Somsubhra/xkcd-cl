@@ -3,6 +3,8 @@
 # Headers
 __author__ = "Somsubhra Bairi"
 __email__ = "somsubhra.bairi@gmail.com"
+__co_author__ = "Shaleen"
+__co_author_email__ = "shaleenx@gmail.com"
 __license__ = "WTFPL (Do What The Fuck You Want to Public License)"
 __version__ = "0.1.0"
 
@@ -87,6 +89,7 @@ class XKCDCL:
     def show_about_info(self):
         print "XKCD Command Line Utility (v" + __version__ + ")"
         print "Written by " + __author__ + " <" + __email__ + ">"
+        print __co_author__ + " <" + __co_author_email__ + ">"
         print "Licensed under " + __license__
 
 # The main method
