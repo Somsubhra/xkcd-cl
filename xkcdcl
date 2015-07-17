@@ -3,6 +3,8 @@
 # Headers
 __author__ = "Somsubhra Bairi"
 __email__ = "somsubhra.bairi@gmail.com"
+__co_author__ = "Shaleen"
+__co_author_email__ = "shaleenx@gmail.com"
 __license__ = "WTFPL (Do What The Fuck You Want to Public License)"
 __version__ = "0.1.0"
 
@@ -11,6 +13,8 @@ import sys
 import json
 import urllib2
 import io
+import traceback
+from os import getlogin
 from PIL import Image
 
 # Define constants
@@ -51,10 +55,14 @@ class XKCDCL:
             # Fetch the data from API endpoint
             data = json.load(urllib2.urlopen(self.api_url))
         except:
-            return
+		print traceback.format_exc()
+		print "No json response received. xkcd servers appear to be coma. Somebody wake up Munroe!"
+		sys.exit()
 
         # Get the image URL from json data
         self.comic_url = data["img"]
+        # Get the comic id from json data
+		self.comic_id = data["num"]
 
     # Display the comic in the GUI system
     def display_comic(self):
@@ -68,14 +76,20 @@ class XKCDCL:
             # Show the image using PIL
             comic = Image.open(comic_file)
             comic.show()
+	    user = str(getlogin())
+	    comic.save("/home/"+user+"/Pictures/XKCD-Fetcher/"+str(self.comic_id)+".png")
+	    fd.close()
+
         except:
-            print "Error: The comic does not exist"
-            return
+		print traceback.format_exc()
+		print "Error: No such comic found! Try fetching comic no. 42."
+		return
 
     # Show the about data of program
     def show_about_info(self):
         print "XKCD Command Line Utility (v" + __version__ + ")"
         print "Written by " + __author__ + " <" + __email__ + ">"
+        print __co_author__ + " <" + __co_author_email__ + ">"
         print "Licensed under " + __license__
 
 # The main method
