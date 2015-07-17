@@ -55,14 +55,14 @@ class XKCDCL:
             # Fetch the data from API endpoint
             data = json.load(urllib2.urlopen(self.api_url))
         except:
-		print traceback.format_exc()
-		print "No json response received. xkcd servers appear to be coma. Somebody wake up Munroe!"
-		sys.exit()
+            print traceback.format_exc()
+            print "No json response received. xkcd servers appear to be coma. Somebody wake up Munroe!"
+            sys.exit()
 
         # Get the image URL from json data
         self.comic_url = data["img"]
         # Get the comic id from json data
-		self.comic_id = data["num"]
+        self.comic_id = data["num"]
 
     # Display the comic in the GUI system
     def display_comic(self):
@@ -76,14 +76,15 @@ class XKCDCL:
             # Show the image using PIL
             comic = Image.open(comic_file)
             comic.show()
-	    user = str(getlogin())
-	    comic.save("/home/"+user+"/Pictures/XKCD-Fetcher/"+str(self.comic_id)+".png")
+	    
+            user = str(getlogin())
+	    comic.save("/home/" + user + "/Pictures/XKCD-Fetcher/" + str(self.comic_id) + ".png")
 	    fd.close()
 
         except:
-		print traceback.format_exc()
-		print "Error: No such comic found! Try fetching comic no. 42."
-		return
+            print traceback.format_exc()
+            print "Error: No such comic found! Try fetching comic no. 42."
+            return
 
     # Show the about data of program
     def show_about_info(self):
