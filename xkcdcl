@@ -14,7 +14,7 @@ import json
 import urllib2
 import io
 import traceback
-from os import getlogin
+import os
 from PIL import Image
 
 # Define constants
@@ -76,9 +76,16 @@ class XKCDCL:
             # Show the image using PIL
             comic = Image.open(comic_file)
             comic.show()
-	    
-            user = str(getlogin())
-	    comic.save("/home/" + user + "/Pictures/XKCD-Fetcher/" + str(self.comic_id) + ".png")
+
+            # Save the image
+            user = str(os.getlogin())
+            filename = "/home/" + user + "/Pictures/XKCD-CL/" + str(self.comic_id) + ".png"
+            directory = os.path.dirname(filename)
+
+            if not os.path.exists(directory):
+                os.makedirs(directory)
+
+	    comic.save(filename)
 	    fd.close()
 
         except:
